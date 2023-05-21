@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simón Dice</title>
+    <style>
+        #game {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 250px;
+        }
+        .button {
+        width: 100px;
+        height: 100px;
+        background-color: #CCC;
+        margin: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        opacity: 0.5;
+        }
+        .button.active {
+        opacity: 1;
+        }
+        #green {
+            background-color: green;
+        }
+        #red {
+        background-color: red;            
+        }
+        #blue {
+            background-color: blue;
+        }
+        #yellow {
+            background-color: yellow;
+        }
+    </style>
+    <script defer src="index.js"></script>
+</head>
+<body>
+    <h1>Simón Dice</h1>
+    <div id="game">
+        <button class="button" id="green" onclick="handleButtonClick('green')"></button>
+        <button class="button" id="red" onclick="handleButtonClick('red')"></button>
+        <button class="button" id="yellow" onclick="handleButtonClick('yellow')"></button>
+        <button class="button" id="blue" onclick="handleButtonClick('blue')"></button>
+    </div>
+    <button onclick="startGame()">Comenzar</button>
+</body>
+</html>
