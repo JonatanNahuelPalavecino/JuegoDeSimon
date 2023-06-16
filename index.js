@@ -16,6 +16,27 @@ let started = false;
 // Variable para verificar si es el turno del jugador
 let playerTurn = false;
 
+//variables para sonidos
+
+const green = document.getElementById("greenSound")
+const red = document.getElementById("redSound")
+const yellow = document.getElementById("yellowSound")
+const blue = document.getElementById("blueSound")
+
+//variables para mensaje cuando pierde el usuario
+const start = document.getElementById("start")
+const container = document.getElementById('btn-container');
+const adviceLose = document.createElement("div")
+adviceLose.innerHTML = '<h2>¡Perdiste!</h2><button onclick="startGame()">Volver a jugar</button>'
+
+//variable para aside de info turno + level
+const aside = document.getElementById("aside")
+const info = document.createElement("div")
+const nivel = document.createElement("p")
+const turno = document.createElement("p")
+info.append(nivel, turno)
+aside.append(info)
+
 // Función para comenzar el juego
 function startGame() {
   if (!started) {
@@ -24,7 +45,10 @@ function startGame() {
     level = 0;
     started = true;
     playerTurn = false;
+    start.remove(container)
+    adviceLose.remove(container)
     nextSequence();
+    
   }
 }
 
@@ -36,6 +60,7 @@ function nextSequence() {
   const randomChosenColor = colors[randomNumber];
   gamePattern.push(randomChosenColor);
   playSequence(gamePattern);
+  nivel.innerText = `Nivel: ${level}`
 }
 
 // Función para reproducir la secuencia de colores
@@ -48,14 +73,15 @@ function playSequence(sequence) {
     if (i === sequence.length) {
       clearInterval(interval);
       playerTurn = true;
+      turno.innerText = "Tu turno"
     }
   }, 1000);
 }
 
 // Función para reproducir el sonido del color
 function playSound(color) {
-  const audio = new Audio(`${color}.mp3`); // Archivo de sonido correspondiente a cada color
-  audio.play();
+  const sound = document.getElementById(`${color}Sound`)
+  sound.play()
 }
 
 // Función para animar el botón al ser seleccionado
@@ -82,19 +108,21 @@ function checkAnswer(currentIndex) {
   if (userPattern[currentIndex] === gamePattern[currentIndex]) {
     if (userPattern.length === gamePattern.length) {
       playerTurn = false;
+      turno.innerText = "Espera"
       setTimeout(() => {
         nextSequence();
       }, 1000);
     }
   } else {
     gameOver();
+    const wrong = document.getElementById("wrongSound")
+    wrong.play()
   }
 }
 
 // Función para finalizar el juego
 function gameOver() {
-  const gameContainer = document.getElementById('game');
-  gameContainer.innerHTML = '<h2>¡Perdiste!</h2><button onclick="startGame()">Volver a jugar</button>';
+  container.append(adviceLose)
   started = false;
   playerTurn = false;
 }

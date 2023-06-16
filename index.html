@@ -5,49 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simón Dice</title>
-    <style>
-        #game {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            width: 250px;
-        }
-        .button {
-        width: 100px;
-        height: 100px;
-        background-color: #CCC;
-        margin: 10px;
-        border-radius: 50%;
-        display: inline-block;
-        cursor: pointer;
-        opacity: 0.5;
-        }
-        .button.active {
-        opacity: 1;
-        }
-        #green {
-            background-color: green;
-        }
-        #red {
-        background-color: red;            
-        }
-        #blue {
-            background-color: blue;
-        }
-        #yellow {
-            background-color: yellow;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script defer src="index.js"></script>
 </head>
 <body>
-    <h1>Simón Dice</h1>
-    <div id="game">
-        <button class="button" id="green" onclick="handleButtonClick('green')"></button>
-        <button class="button" id="red" onclick="handleButtonClick('red')"></button>
-        <button class="button" id="yellow" onclick="handleButtonClick('yellow')"></button>
-        <button class="button" id="blue" onclick="handleButtonClick('blue')"></button>
-    </div>
-    <button onclick="startGame()">Comenzar</button>
+    <main class="game">
+        <h1 class="game-title">Simón Dice</h1>
+        <div class="game-container">
+            <div class="game-box">
+                <button class="button" id="green" onclick="handleButtonClick('green')"></button>
+                <button class="button" id="red" onclick="handleButtonClick('red')"></button>
+                <button class="button" id="yellow" onclick="handleButtonClick('yellow')"></button>
+                <button class="button" id="blue" onclick="handleButtonClick('blue')"></button>
+            </div>
+            <div class="game-btns" id="btn-container">
+                <button class="game-btn" id="start" onclick="startGame()">Comenzar</button>
+            </div>
+        </div>
+        <aside class="game-data" id="aside">
+            
+        </aside>
+    </main>
+    <audio id="greenSound" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+    <audio id="redSound" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+    <audio id="yellowSound" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+    <audio id="blueSound" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+    <audio id="wrongSound" src="http://www.freesound.org/data/previews/331/331912_3248244-lq.mp3"></audio>
 </body>
 </html>
