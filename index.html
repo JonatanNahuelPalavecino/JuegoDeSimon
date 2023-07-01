@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simón Dice</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./images/Simon_Electronic_Game.jpg">
     <script defer src="index.js"></script>
 </head>
 <body>
@@ -21,15 +22,20 @@
             <div class="game-btns" id="btn-container">
                 <button class="game-btn" id="start" onclick="startGame()">Comenzar</button>
             </div>
+            <aside class="game-data" id="aside">
+                
+            </aside>
         </div>
-        <aside class="game-data" id="aside">
-            
-        </aside>
+        <div class="game-notify">
+            <p id="title-advice" class ="game-notifyAdvice">Superaste 10 niveles!</p>
+            <img id="img-advice" class="game-notifyImg" src="./images/toasty.png" alt="toasty">
+        </div>
     </main>
     <audio id="greenSound" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
     <audio id="redSound" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
     <audio id="yellowSound" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
     <audio id="blueSound" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
     <audio id="wrongSound" src="http://www.freesound.org/data/previews/331/331912_3248244-lq.mp3"></audio>
+    <audio id="toasty" src="./audio/mortal-kombat-toasty.mp3"></audio>
 </body>
 </html>

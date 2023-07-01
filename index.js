@@ -22,20 +22,45 @@ const green = document.getElementById("greenSound")
 const red = document.getElementById("redSound")
 const yellow = document.getElementById("yellowSound")
 const blue = document.getElementById("blueSound")
+const toasty = document.getElementById("toasty")
 
 //variables para mensaje cuando pierde el usuario
 const start = document.getElementById("start")
 const container = document.getElementById('btn-container');
 const adviceLose = document.createElement("div")
-adviceLose.innerHTML = '<h2>¡Perdiste!</h2><button onclick="startGame()">Volver a jugar</button>'
+adviceLose.classList = "game-advice"
+adviceLose.innerHTML = 
+  `
+    <p class ="game-titleAdvice">¡Perdiste!</p>
+    <button class="game-btn" onclick="startGame()">Volver a jugar</button>
+  `
 
 //variable para aside de info turno + level
-const aside = document.getElementById("aside")
-const info = document.createElement("div")
 const nivel = document.createElement("p")
+nivel.classList = "game-detail"
+nivel.innerText = "Nivel: 0"
+
 const turno = document.createElement("p")
-info.append(nivel, turno)
-aside.append(info)
+turno.classList = "game-detail"
+turno.innerText = "Selecciona comenzar para jugar"
+
+const aside = document.getElementById("aside")
+aside.append(nivel, turno)
+
+//Variable para notificar la superacion de 10 niveles
+const textoNot = document.getElementById("title-advice")
+const imgNot = document.getElementById("img-advice")
+
+// Función para mostrar mensaje por la superacion de 10 niveles
+function levelSuperiorA10() {
+  textoNot.classList.add("active")
+  imgNot.classList.add("active")
+  toasty.play()
+  setTimeout(() => {
+    textoNot.classList.remove("active")
+    imgNot.classList.remove("active")
+  }, 2000)
+}
 
 // Función para comenzar el juego
 function startGame() {
@@ -61,6 +86,7 @@ function nextSequence() {
   gamePattern.push(randomChosenColor);
   playSequence(gamePattern);
   nivel.innerText = `Nivel: ${level}`
+  level % 11 === 0 ? levelSuperiorA10() : null
 }
 
 // Función para reproducir la secuencia de colores
@@ -108,7 +134,7 @@ function checkAnswer(currentIndex) {
   if (userPattern[currentIndex] === gamePattern[currentIndex]) {
     if (userPattern.length === gamePattern.length) {
       playerTurn = false;
-      turno.innerText = "Espera"
+      turno.innerText = "Espera..."
       setTimeout(() => {
         nextSequence();
       }, 1000);

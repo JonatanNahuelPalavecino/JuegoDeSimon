@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -15,42 +17,153 @@
 .game-title {
     position: absolute;
     top: 1rem;
+    font-family: 'Martian Mono', monospace;
+    text-shadow: -1px 1px 2px white;
+}
+
+.game-titleAdvice {
+    font-family: 'Martian Mono', monospace;
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 3rem;
 }
 
 .game-box {
-    width: 250px;
+    width: 430px;
+    height: 430px;
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
     justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 25%;
 }
 
 .button {
-width: 100px;
-height: 100px;
-margin: 5px;
-cursor: pointer;
-opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .2s ease;
+    border: none;
 }
 
 .button.active {
-opacity: 1;
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .game-btns {
     width: 220px;
-    height: 50px;
+    height: 100px;
     display: flex;
     justify-content: center;
     margin: 1rem;
 }
 
+.game-advice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .game-data {
     position: absolute;
-    top: 35%;
-    left: 20%;
+    top: 22%;
     width: 200px;
-    height: 100px;
-    background-color: beige;
+    height: 200px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-data::before {
+    content: "";
+    border: 1px solid rgb(161, 153, 153);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    position: absolute;
+}
+
+.game-detail {
+    color: green;
+    font-family: 'Martian Mono', monospace;
+    text-align: center;
+    margin: .5rem 1rem;
+}
+
+.game-btn {
+    height: 50px;
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(255, 56, 86);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    font-family: 'Martian Mono', monospace;
+    transition: all .3s ease;
+    box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+}
+
+.game-btn:hover {
+    box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+   
+.game-btn:active {
+    background-color: rgb(255, 56, 86);
+    box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+}
+
+.game-notify {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.game-notifyAdvice {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Martian Mono', monospace;
+    margin: 10px 5px;
+    position: relative;
+    right: -300px;
+    transition: .5s ease;
+}
+
+.game-notifyAdvice.active {
+    right: 0
+}
+
+.game-notifyImg {
+    position: relative;
+    right: -255px;
+    transition: .5s ease;
+}
+
+.game-notifyImg.active {
+    right: 0
 }
 
 #green {
